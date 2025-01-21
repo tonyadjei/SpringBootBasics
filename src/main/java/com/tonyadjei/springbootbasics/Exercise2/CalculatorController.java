@@ -19,8 +19,8 @@ public class CalculatorController {
         return a != null && b != null ? "The product is: " + (a * b) : "Please add 2 path parameters, a and b in the url to perform a multiplication";
     }
 
-    @GetMapping("multiply/")
-    public String multiplication() {
+    @GetMapping("multiply")
+    public String multiply() {
         return "Please add 2 path parameters, a and b in the url to perform a multiplication";
     }
 }
