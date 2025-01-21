@@ -1,6 +1,7 @@
 package com.tonyadjei.springbootbasics.Exercise7;
 
 
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,6 +12,16 @@ import java.util.ArrayList;
 @RequestMapping("users")
 public class AdvancedUserController {
     ArrayList<User> users = new ArrayList<>();
+
+    @GetMapping("{id}")
+    public ResponseEntity<User> getUser(@PathVariable int id) {
+        for (User user: users) {
+            if (user.getId() == id) {
+                return ResponseEntity.ok(user);
+            }
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+    }
 
     @PostMapping("")
     public ResponseEntity<User> addUser(@RequestBody User user) {
